@@ -3,8 +3,6 @@
 **Student:** Khaled Alanazi (202338530)
 **Assignment:** Assignment 2: Interactive Features
 
-> **TODO (Khaled) before you submit.** Set the date in the declaration (section 8) on the day you submit, and read the whole report once to check that every statement is true. Then delete this box.
-
 ---
 
 ## 1. Usage Log
@@ -126,4 +124,4 @@ AI evidence: the full, unedited conversation(s) and the first versions of the AI
 
 **Name:** Khaled Alanazi
 **ID:** 202338530
-**Date:** TODO (the day you submit)
+**Date:** 2026-10-22
