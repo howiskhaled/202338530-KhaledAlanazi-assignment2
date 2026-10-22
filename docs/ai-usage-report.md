@@ -91,13 +91,6 @@ My own checks:
 - I opened the site on my phone and used it there.
 - I ran the offline test from the README (Network tab set to Offline, then pressing "Show me another") and saw the friendly error message and the "Try again" button.
 
---- | --- | --- |
-| TODO | TODO | TODO |
-
-My own checks (TODO: add what you tested yourself, for example other browsers, your phone, the offline test from the README):
-
-- TODO
-
 ---
 
 ## 6. Understanding checklist
@@ -121,7 +114,7 @@ I should be able to explain each of these without the AI:
 
 ## 7. Learning outcomes
 
-The hardest part for me was the `fetch` code. It was difficult to picture how the page asks Wikipedia for data, waits for the answer, and then decides what to show when it succeeds, is slow or fails. I tried to change the fetching code by myself, but I did not understand it, so I did not change it. The filter logic was also hard at first, because one function has to work out what is visible from both the search text and the chosen category. What I did understand well is why the site needs loading, error and empty messages, so the visitor always knows what happened and what to do next. I also learned how to test the error state by switching the browser to Offline. Next time I want to practise `fetch` on a small example before using it in my portfolio.
+The hardest part for me was the `fetch` code. It was difficult to picture how the page asks Wikipedia for data, waits for the answer, and then decides what to show when it succeeds, is slow or fails. I tried to change the fetching code by myself, but I did not understand it, so I did not change it. The filter logic was also hard at first, because one function has to work out what is visible from both the search text and the chosen category. I also ran the offline test from the README, which showed me how the error state looks when the request fails. I still need to keep studying the `fetch` part and the filter logic so I can explain them without help.
 
 ---
 
