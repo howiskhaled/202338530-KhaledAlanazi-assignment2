@@ -1,87 +1,124 @@
 # AI Usage Report
 
 **Student:** Khaled Alanazi (202338530)
-**Assignment:** Assignment 1: Foundation & AI Integration
+**Assignment:** Assignment 2: Interactive Features
+
+> **TODO (Khaled) before you submit.** Three parts of this report can only be written by you, because they describe your own work and understanding. They are marked with `TODO`: the "What I changed after the AI draft" table (section 5), the "Learning outcomes" paragraph (section 7) and the date in the declaration (section 8). Delete this box and every `TODO` line when you have filled them in. Please also check that every statement in the report is true for what you actually did.
 
 ---
 
-## 1. Tools Used & Use Cases
+## 1. Usage Log
 
-| Tool | How I used it |
+One row per AI conversation (`C01`, `C02`, ...) or AI-generated artifact (`A01`, `A02`, ...).
+
+| ID | Tool (model) | Date | Purpose | Files affected | What you changed and how you verified it |
+|----|--------------|------|---------|----------------|------------------------------------------|
+| C01 | Claude Code (Claude Sonnet 5.5) | 2026-10-22 | I gave it the Assignment 2 brief and my Assignment 1 repository. It planned and built the toolkit search and filter, the Wikipedia API section, the form hint and animated messages, the English and Arabic text for them, and drafted the README, technical documentation and this report. | `index.html`, `css/styles.css`, `js/script.js`, `js/i18n.js`, `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | Claude fixed one bug it found while testing (a tall Wikipedia thumbnail stretched the card; fixed by positioning the image absolutely) and simplified its own error handling after noticing a redundant branch. It verified the features in the Claude desktop app's built-in browser: toolkit search, filter and empty state in English and Arabic; the Wikipedia section's loading, success, simulated network failure, HTTP 503, unsafe-link rejection and recovery; the form hint and success message; no horizontal scrolling at 320 px; no console errors (full list in `docs/technical-documentation.md`). My own edits and checks are in section 5. |
+
+There are no separate AI-generated artifacts (images, text files) apart from the files above. The full conversation and the first versions of each file go in the AI Evidence ZIP (see section 8).
+
+I did not use any other AI tool for this assignment.
+
+---
+
+## 2. Tool and use cases
+
+| Tool | How it was used |
 | --- | --- |
-| **Claude Code** | Planning questions, the first draft of the HTML, CSS and JavaScript, testing, one extra feature (the screenshot gallery), explanations and documentation drafts |
-| **Codex** | Redesign of the UI and UX inspired by monopo.vn, the Arabic language feature, and explanations of how they work |
+| **Claude Code** (Claude Sonnet 5.5) | Reading my Assignment 1 repository, choosing and building the new features, testing them in a browser, explaining them, and drafting the documentation |
 
-I did not use any other AI tool.
+**Use cases**
 
-### Use cases
+1. **Reading the brief and my existing code.** Claude read the assignment and cloned my Assignment 1 repository to see what already existed (theme toggle, greeting, gallery, validated form, English / Arabic switcher). That mattered because Assignment 1 already had a lot of JavaScript, so Assignment 2 had to add something clearly new.
+2. **Dynamic content: toolkit explorer.** It turned the four toolkit rows into individual tool tags and added a live search box, category chips, a result count and an empty state. It added hidden search aliases (`js`, `ios`, `terminal`, ...) so the search is more useful than plain text matching.
+3. **Data handling: Wikipedia API.** It added a "Learn something new today" section that fetches a random article summary from the Wikipedia REST API in the site's current language, saves the last article in `localStorage`, and handles loading, offline, timeout and failure states with a "Try again" button.
+4. **Animation.** It added entrance animations for filtered items and new articles, a loading skeleton, sliding form messages and hover effects, all disabled by `prefers-reduced-motion`.
+5. **User feedback.** It added the live character hint on the contact form and the friendly messages described above, in English and Arabic.
+6. **Security review of its own feature.** Because the Wikipedia section shows text and links from another website, Claude wrote the code so that article text is only inserted with `textContent` and links and images are accepted only from Wikipedia's own hosts. It tested that a `javascript:` link is rejected.
+7. **Testing.** Claude ran the checks listed in the usage log, in both languages, and found and fixed the thumbnail bug.
+8. **Documentation.** Claude drafted the README, the technical documentation and this report.
 
-**Claude Code**
+### Decisions made while building
 
-1. **Planning.** I gave Claude the assignment brief. Before writing any code, it asked me questions about the style, colours, features and my personal details, so the first version came from my choices and not from a generic template.
-2. **First draft.** Claude wrote the first version of `index.html`, `css/styles.css` and `js/script.js`.
-3. **Testing and debugging.** Claude checked the site in a browser at several screen widths and found two real problems in its own work. At 320 px wide the navigation and theme button overflowed the screen, so the nav links were made more compact. The "·" separator in the Arabic project name also appeared on the wrong side, and that was fixed too. Later, Claude also tested the Arabic language feature that Codex added: switching languages both ways, the saved choice, the gallery, the form messages, the mobile menu and horizontal scrolling on small screens. It found no problems.
-4. **A feature on request.** I asked for a gallery that opens when I click my Mizanyti app screenshots. Claude built it with the native `<dialog>` element, and I asked it to explain each step so I could learn how it works. Its testing found that on a short phone screen the bottom of the dialog was cut off by 9 px, and it fixed that.
-5. **Documentation.** Claude wrote the first drafts of the README and the technical documentation.
+These were made by the AI during the conversation, and I need to review them (see section 5):
 
-**Codex**
-
-6. **UI and UX redesign.** I first started with a colour theme that I did not like. I found monopo.vn, and I liked its clean style so much that I asked Codex to imitate it and to explain what techniques the website uses to make its minimalistic style. The first result had plain, basic colours, so I asked Codex to add colour and make it colourful. The redesign added an SVG artwork hero, a locally hosted Inter font, an editorial layout with full-width project sections, a mobile menu and motion controls. It kept the screenshot gallery, the theme toggle, the time-based greeting and the form validation, and the form now says clearly that no message is sent. Codex also ran its own browser checks at eight screen widths from 320 px to 1920 px. Those checks show what the tool did, and they do not replace my own testing.
-7. **Explanations.** With both tools I asked for the features and for explanations of how they were built, so that I could understand the code.
-8. **Arabic language feature.** After the redesign, I used Codex to add an Arabic version of the whole website. A language toggle switches all the text to Arabic and the layout to right-to-left, and the choice is remembered. This added a new file, `js/i18n.js`, which holds the English and Arabic text and the switching logic, and a locally hosted Arabic font.
-
-### Decisions I made myself
-
-- Which features to include, and using plain HTML, CSS and JavaScript with no framework.
-- All content about me: my name, field, interests, skills, GitHub link and the description of my Mizanyti app, plus the Mizanyti screenshots from my own project.
-- Deciding that the first colour theme was not right, and choosing monopo.vn as my inspiration.
-- Asking for colour after the first redesign came out plain.
-- Deciding to add an Arabic language feature to the website.
-- The "Driven by curiosity" theme, which is my own idea.
-- Editing the text on the page, such as the About Me section, and adding a real photo of myself.
+- Which features to add: a searchable toolkit (instead of a project filter, because I only have two projects and the toolkit has ten tools), and Wikipedia as the API (because it fits my "Driven by curiosity" theme, needs no key and works in Arabic).
+- To keep the contact form free of stored personal data, so no form draft is saved to `localStorage`.
+- To fetch the first Wikipedia article only when the section nears the screen, so people who never scroll there make no request.
+- To keep the repository history in small branches (`feature/toolkit-explorer`, `feature/curiosity-api`, `feature/form-feedback`, `docs/assignment-2`) merged into `main`, with `Assisted-by:` lines in the commit messages.
 
 ---
 
-## 2. Benefits & Challenges
+## 3. Benefits & Challenges
 
 ### Benefits
 
-- I got a working, well-structured starting point quickly, so I could spend my time understanding the code instead of staring at a blank file.
-- The AI could turn an idea into something I could see. I found a website I loved, and Codex showed me how its style is built.
-- Codex did everything I asked for, including the Arabic language feature.
-- Asking the tools to explain their work taught me practices I would not have known to ask for, such as CSS variables for theming and the native `<dialog>` element.
-- Testing at different screen sizes caught layout problems early.
+- The AI read my existing code first, so the new features reuse my Assignment 1 structure (`i18n.js`, the `languagechange` event, `playEntrance`-style helpers, the same CSS tokens) instead of starting a separate project.
+- It tested its own work, in both languages, and found a real layout bug I would likely only have noticed later.
+- It explained choices that were new to me, such as why `aria-disabled` is better than `disabled` for the "Show me another" button, and why third-party text should go through `textContent`.
 
 ### Challenges and limitations
 
-- **The features confused me at first.** The time-based greeting and the dark mode were confusing, and I did not understand them on the first try. After more explanation they turned out to be easy, and they are cool features.
-- **My own colour changes did not work.** I tried to change the colours by hand, and the result looked awful. I could picture the idea in my head but could not build it yet, so I asked Codex to visualise that idea. The result was good.
-- **The first results needed follow-up.** Codex's first redesign had plain, basic colours and needed a second request. Claude's first navigation did not fit on a 320 px screen. AI output has to be tested and cannot simply be trusted.
-- **Some code is more advanced than my current level.** I am still learning HTML, CSS and JavaScript, so I need to keep studying the code to be able to explain every part of it.
-- **The AI could not know things only I know.** It did not have my app's screenshots or my profile photo, so I supplied them myself.
+- **Testing was limited.** Claude tested in one Chromium-based browser at a few widths. It did not test Safari, Firefox or a real phone, so I still need to check those myself.
+- **Network-dependent feature.** The Wikipedia section depends on a service I do not control, and random articles are not curated, so the page includes a note saying I did not choose or check the article.
+- **Some code is more advanced than my current level.** `fetch` with `AbortController`, `async`/`await` and `IntersectionObserver` need studying so I can explain every line (section 6 lists what I should be able to explain).
+- **The AI cannot know things only I know.** It cannot decide what I want my portfolio to say, which is why the content stays mine.
 
 ---
 
-## 3. Learning Outcomes
+## 4. How the AI output was checked
 
-I learned how to build a gallery with a dialog, including how to open it, close it and move between images. I learned how to make a website feel smooth to use. From studying monopo.vn with Codex, I learned that the typography and the monochrome background in the hero are two of the main things behind its minimalistic style. The time greeting and the dark mode confused me at first, but I understand them better now. Adding the Arabic version also taught me how tricky it is to build a website in Arabic because of the layout of the language, which runs from right to left. Creating my own repository also made me more comfortable using GitHub. As for my workflow, I learned that I can show an AI a reference website, ask it to imitate that style and explain the techniques, and then give follow-up instructions, such as asking for more colour, until the result matches my idea.
+- The AI tested each feature in a browser and recorded the results in `docs/technical-documentation.md`.
+- The features can be tried again by following "How to use the new features" and "Trying the error messages" in the README.
+- Every commit that contains AI-assisted code names the tool in an `Assisted-by:` line.
 
 ---
 
-## 4. Responsible Use & Modifications
+## 5. What I changed after the AI draft
 
-### How I reviewed the AI output
+> **TODO (Khaled):** Fill this table with edits you actually made after the AI wrote the first version, for example changing wording or colours, adding or removing a tool, changing the Arabic text so it sounds like you, adjusting an animation, or fixing something you found. The assignment requires that you **edit or improve** the AI output, and the report must show it. If you have not changed anything yet, do that first, then list it here.
 
-- I opened the website in Chrome and used the DevTools device toolbar to check the mobile view.
-- I asked both tools to explain how the features work, so that I understand the code and not only the result.
+| File | What I changed | Why |
+| --- | --- | --- |
+| TODO | TODO | TODO |
 
-### Modifications I made
+My own checks (TODO: add what you tested yourself, for example other browsers, your phone, the offline test from the README):
 
-- Edited the text on the page, such as the About Me section, so it says what I want it to say.
-- Added a real photo of myself and the screenshots of my own Mizanyti app.
-- Tried to adjust the colours by hand. The result was not good, so I described my idea to Codex and it visualised it for me.
-- Came up with the "Driven by curiosity" theme.
+- TODO
 
-### Academic integrity
+---
 
-I used AI as the assignment allows, and I am documenting it openly here. I will only submit code that I understand and can explain, and I did not copy code from classmates.
+## 6. Understanding checklist
+
+I should be able to explain each of these without the AI:
+
+| Topic | Where to look |
+| --- | --- |
+| How one `render()` function turns the search text and selected category into what is visible | `initToolkit()` in `js/script.js` |
+| Why the filter checks the tool's text **and** its `data-keywords` | `matches()` in `initToolkit()` and the `data-keywords` attributes in `index.html` |
+| What `fetch`, `async`/`await` and `AbortController` do, and what happens on a timeout | `fetchRandomFact()` and `load()` in `initCuriosity()` |
+| Why a `requestId` is used (ignoring an old response that arrives late) | `load()` |
+| Why the article is checked and rebuilt (`cleanFact()`, `trustedUrl()`) and why `textContent` is used instead of `innerHTML` | `js/script.js` |
+| What is saved in `localStorage` and why every access is in `try/catch` | `initCuriosity()`, `initThemeToggle()` |
+| How the skeleton, error and ready panels are switched, and why the button uses `aria-disabled` | `render()` in `initCuriosity()` |
+| How `IntersectionObserver` delays the first request | bottom of `initCuriosity()` |
+| Why animations replay when an element goes from `hidden` to visible | `playEntrance()` and `@keyframes enter-up` in `css/styles.css` |
+| How new text reaches the Arabic version (the `languagechange` event and `js/i18n.js`) | `render()` functions and `messages.ar` |
+
+---
+
+## 7. Learning outcomes
+
+> **TODO (Khaled):** Write 4 to 6 sentences in your own words: what you learned from this assignment (for example `fetch`, error states, `localStorage`, filtering), what was confusing at first, and what you would do differently. Do not copy this from the AI.
+
+---
+
+## 8. Declaration
+
+AI evidence: the full, unedited conversation(s) and the first versions of the AI-written files are in `id-name-assignment2-ai-evidence.zip` (`conversations/` and `artifacts/`), submitted on Blackboard with the repository link. They are not committed to this repository.
+
+> I declare that this report and the attached evidence document all of my AI use in this assignment, with complete and unedited conversations, and that I understand and can explain all the code I submitted. I understand that undeclared AI use or a false declaration will be treated as plagiarism according to KFUPM regulations.
+
+**Name:** Khaled Alanazi
+**ID:** 202338530
+**Date:** TODO (the day you submit)
