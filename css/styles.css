@@ -259,13 +259,17 @@ button:disabled { cursor: default; }
 .field textarea { resize: vertical; min-height: 110px; }
 .field input:focus, .field textarea:focus { border-color: var(--accent); outline: 2px solid var(--accent); outline-offset: 4px; }
 .field [aria-invalid="true"] { border-bottom: 2px solid var(--text); }
-.field__error { font-size: 11px; margin-top: 8px; }
+.field__error { font-size: 11px; margin-top: 8px; animation: message-in .5s var(--ease); }
+.field__hint { font-size: 11px; margin-top: 8px; color: var(--muted); }
+.field__hint:empty { display: none; }
 .field__error:empty { display: none; }
 .form__footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
 .form__footer > p { font-size: 10px; color: var(--muted); }
 .form__footer .pill { background: var(--accent); color: var(--on-accent); }
 .form__footer .pill:hover { background: var(--accent-hover); }
-.form__status { font-size: 13px; margin-top: 20px; }
+.form__status { display: flex; gap: 12px; align-items: baseline; font-size: 13px; margin-top: 20px; padding: 14px 16px; border-inline-start: 3px solid var(--accent); background: var(--accent-soft); animation: message-in .6s var(--ease); }
+.form__status::before { content: '✓'; color: var(--accent); }
+@keyframes message-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 .form__status:empty { display: none; }
 .form:not(.is-ready) button[type="submit"] { display: none; }
 .site-footer { margin-top: 120px; }
@@ -441,7 +445,7 @@ html[dir="rtl"] .contact-copy > p { font-size: 18px; line-height: 1.8; }
 html[dir="rtl"] .contact-copy .contact-note, html[dir="rtl"] .form__footer > p { font-size: 13px; }
 html[dir="rtl"] .field label { font-size: 12px; }
 html[dir="rtl"] .field input, html[dir="rtl"] .field textarea { font-size: 17px; }
-html[dir="rtl"] .field__error { font-size: 13px; }
+html[dir="rtl"] .field__error, html[dir="rtl"] .field__hint { font-size: 13px; }
 html[dir="rtl"] .form__status { font-size: 16px; }
 html[dir="rtl"] .footer-wordmark { line-height: 1.5; }
 html[dir="rtl"] .footer-bottom { font-size: 12px; }

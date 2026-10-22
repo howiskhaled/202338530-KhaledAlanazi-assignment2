@@ -489,6 +489,17 @@ function initContactForm() {
     const name = document.getElementById('name').value.trim().split(/\s+/)[0];
     status.textContent = i18n.t('form.success', { name: `\u2068${name}\u2069` });
   }
+  // A live hint tells the visitor how far the message is from the minimum length.
+  const messageInput = document.getElementById('message');
+  const messageHint = document.getElementById('message-hint');
+  const MIN_MESSAGE = 10;
+  function renderMessageHint() {
+    const typed = messageInput.value.trim().length;
+    messageHint.textContent = typed === 0 ? ''
+      : typed < MIN_MESSAGE ? i18n.t('form.hintMore', { count: i18n.number(MIN_MESSAGE - typed) })
+      : i18n.t('form.hintOk');
+  }
+  messageInput.addEventListener('input', renderMessageHint);
   function validateField(fieldName) {
     const input = document.getElementById(fieldName);
     const message = validators[fieldName](input.value.trim());
@@ -523,6 +534,7 @@ function initContactForm() {
       if (document.getElementById(fieldName).getAttribute('aria-invalid') === 'true') validateField(fieldName);
     });
     if (hasPreview) renderPreview();
+    renderMessageHint();
   });
   form.classList.add('is-ready');
 }
