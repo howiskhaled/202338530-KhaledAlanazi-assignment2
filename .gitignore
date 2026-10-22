@@ -1,0 +1,19 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+
+# Dependencies / build output (not used yet, ready for later assignments)
+node_modules/
+dist/
+
+# Local tooling
+.claude/
+*.log
+
+# Local design review artifacts
+.preview/

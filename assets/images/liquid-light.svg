@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <defs>
+    <linearGradient id="base" x1="70" y1="80" x2="1420" y2="910" gradientUnits="userSpaceOnUse"><stop stop-color="#456c54"/><stop offset=".32" stop-color="#323d2d"/><stop offset=".6" stop-color="#4c2619"/><stop offset="1" stop-color="#240807"/></linearGradient>
+    <linearGradient id="ribbon" x1="210" y1="80" x2="1230" y2="840" gradientUnits="userSpaceOnUse"><stop stop-color="#a0e0ab"/><stop offset=".26" stop-color="#bdd4a4"/><stop offset=".46" stop-color="#d5b661"/><stop offset=".62" stop-color="#ffac2e"/><stop offset=".81" stop-color="#b74b26"/><stop offset="1" stop-color="#a52d25"/></linearGradient>
+    <linearGradient id="fold" x1="240" y1="110" x2="1110" y2="1000" gradientUnits="userSpaceOnUse"><stop stop-color="#152e21"/><stop offset=".28" stop-color="#5a7756"/><stop offset=".44" stop-color="#c5d7a7"/><stop offset=".57" stop-color="#cf9f48"/><stop offset=".69" stop-color="#6c3b1d"/><stop offset=".84" stop-color="#391810"/><stop offset="1" stop-color="#180c0b"/></linearGradient>
+    <linearGradient id="edge" x1="180" y1="300" x2="1430" y2="770" gradientUnits="userSpaceOnUse"><stop stop-color="#d2f6cc"/><stop offset=".3" stop-color="#a2c595"/><stop offset=".52" stop-color="#ffe4a7"/><stop offset=".72" stop-color="#e1903a"/><stop offset="1" stop-color="#a52d25"/></linearGradient>
+    <linearGradient id="lower" x1="0" y1="650" x2="1390" y2="1250" gradientUnits="userSpaceOnUse"><stop stop-color="#102b21"/><stop offset=".26" stop-color="#9ba66c"/><stop offset=".53" stop-color="#de9b3b"/><stop offset=".76" stop-color="#78251a"/><stop offset="1" stop-color="#260706"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#e9db9d" stop-opacity=".8"/><stop offset="1" stop-color="#e9db9d" stop-opacity="0"/></radialGradient>
+    <filter id="liquid" x="-20%" y="-30%" width="140%" height="160%"><feTurbulence type="fractalNoise" baseFrequency=".0018 .0028" numOctaves="2" seed="8" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="110" xChannelSelector="R" yChannelSelector="G"/><feGaussianBlur stdDeviation="10"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="34"/></filter><filter id="rim"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".045"/></feComponentTransfer></filter>
+  </defs>
+  <path fill="url(#base)" d="M0 0h1600v1000H0z"/>
+  <g filter="url(#liquid)">
+    <path d="M-250-160C250 280 60 472 597 269 1010 111 1005-110 1840 75L1730 920C1197 1001 914 505 543 646 124 805-102 650-250 730Z" fill="url(#ribbon)"/>
+    <path d="M-210-150C347 387 66 543 645 346 975 234 1012-52 1682 153L1798 400C1280 180 1111 398 863 506 385 715 333 170-210 405Z" fill="url(#fold)"/>
+    <path d="M-161 4C344 479 147 483 619 311 1015 167 1055-50 1764 120" stroke="url(#edge)" stroke-width="29"/>
+    <path d="M-240 888C180 292 313 645 661 732 1111 845 1161 467 1820 836L1751 1259-184 1224Z" fill="url(#lower)"/>
+    <path d="M-162 827C218 397 319 699 708 778 1139 865 1189 556 1691 841" stroke="url(#edge)" stroke-width="16"/>
+    <path d="M-72 1030C157 709 394 737 670 888 972 1054 1245 743 1702 1002" stroke="#210e09" stroke-opacity=".75" stroke-width="85"/>
+  </g>
+  <ellipse cx="706" cy="430" rx="340" ry="110" fill="url(#glow)" transform="rotate(-27 706 430)" filter="url(#soft)" opacity=".4"/>
+  <path d="M-160 72C314 476 181 473 615 316 1015 170 1124-38 1669 120" stroke="url(#edge)" stroke-width="4" opacity=".5" filter="url(#rim)"/>
+  <path fill="#fff" filter="url(#grain)" opacity=".8" d="M0 0h1600v1000H0z"/>
+</svg>

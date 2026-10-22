@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Khaled Alanazi — Computer Science student exploring thoughtful web experiences, mobile apps and cybersecurity. A selection of things I'm learning and building.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fff9f2">
+  <title>Khaled Alanazi — Driven by curiosity.</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin="">
+  <script>
+    (function () {
+      var theme = 'light';
+      try { if (localStorage.getItem('theme') === 'dark') theme = 'dark'; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/i18n.js" defer=""></script><script src="js/script.js" defer=""></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a><p id="language-status" class="sr-only" role="status"></p>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Khaled Alanazi, back to top" data-i18n-aria-label="brand.top"><span data-i18n="brand.first">khaled</span><br><span data-i18n="brand.last">alanazi</span><span class="brand__dot">.</span></a>
+    <span class="header-caption" data-i18n="header.caption">A work in progress. Always.</span>
+    <div class="header-actions">
+      <nav class="desktop-nav" aria-label="Main" data-i18n-aria-label="nav.label">
+        <a href="#projects"><span data-i18n="nav.work">Work</span><span class="nav-count" data-number="2">02</span></a><a href="#about" data-i18n="nav.about">About</a><a href="#contact"><span data-i18n="nav.contact">Contact</span><span aria-hidden="true" class="directional-arrow">↗</span></a>
+      </nav>
+      <button class="language-toggle" type="button" data-language-toggle="" lang="ar" dir="rtl" hidden="" aria-label="Switch to Arabic">العربية</button><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.3"></circle><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"></path></svg></button>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-haspopup="dialog" aria-controls="mobile-menu" aria-expanded="false"><span data-i18n="nav.menu">Menu</span><span aria-hidden="true">+</span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero__art" aria-hidden="true"></div><div class="hero__shade" aria-hidden="true"></div>
+      <div class="hero__heading"><h1 id="hero-title"><span data-i18n="hero.line1">Driven by</span><br><span data-i18n="hero.line2">curiosity.</span></h1></div>
+      <div class="hero__bottom">
+        <a class="scroll-cue" href="#about" aria-label="Scroll to about me" data-i18n-aria-label="hero.scroll"><svg class="scroll-cue__ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="scroll-circle" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"></path></defs><text><textPath href="#scroll-circle" textLength="226" data-i18n="hero.scrollRing">SCROLL TO EXPLORE · SCROLL TO EXPLORE · </textPath></text></svg><span class="scroll-cue__arrow" aria-hidden="true">↓</span></a>
+        <p class="hero__signature"><span data-i18n="hero.role">Computer science student.</span><br><span data-i18n="hero.signature">Thoughtful things for web &amp; mobile.</span></p>
+        <div class="hero__edition"><span><span data-i18n="hero.edition">INDEPENDENT PORTFOLIO —</span><span id="hero-year">2026</span></span><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false"><span class="motion-toggle__icon" aria-hidden="true">Ⅱ</span> <span id="motion-label">Pause motion</span></button></div>
+      </div>
+    </section>
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-marker reveal"><span data-i18n="about.marker">01 / A LITTLE ABOUT ME</span><span data-i18n="about.aside">LEARNING, MAKING, REPEATING</span></div>
+        <h2 class="statement reveal" id="about-title"><span data-i18n="about.line1">A curious mind.</span><br><span data-i18n="about.line2">A builder at heart.</span></h2>
+        <div class="about-content">
+          <figure class="about-portrait reveal"><img src="assets/images/profile.jpg" alt="Khaled's childhood profile photo" width="400" height="400" loading="lazy" data-i18n-alt="about.photoAlt"><figcaption data-i18n="about.photoCaption">Curious from the beginning.</figcaption></figure>
+          <div class="about-copy reveal"><p class="eyebrow" id="greeting">HELLO, I'M KHALED.</p><p data-i18n="about.intro">I’m a Computer Science student turning ideas into things you can use. I’m finding my way through full-stack development, building for the web and mobile, and learning something with every project.</p><p data-i18n="about.security">Cybersecurity keeps me curious. Understanding how systems break helps me build them with more care.</p><a class="text-link" href="#skills"><span data-i18n="about.tools">The tools I’m growing with</span><span aria-hidden="true" class="directional-arrow">↘</span></a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section work-section" id="projects" aria-labelledby="work-title">
+      <div class="container">
+        <div class="section-marker reveal"><span data-i18n="work.marker">02 / SELECTED WORK</span><span data-i18n="work.aside">IDEAS, PUT INTO PRACTICE</span></div>
+        <div class="section-heading reveal"><h2 id="work-title"><span data-i18n="work.line1">Learning by</span><br><span class="muted" data-i18n="work.line2">making.</span></h2><p><span data-i18n="work.lead1">A few things I’ve built.</span><br><span data-i18n="work.lead2">And a little of what’s next.</span></p></div>
+        <div class="projects">
+          <article class="project reveal">
+            <button class="project__visual project__phones" type="button" data-gallery-open="" aria-haspopup="dialog" aria-label="Explore the Mizanyti app screenshot gallery" data-i18n-aria-label="mizanyti.open">
+              <span class="project__visual-label">MIZANYTI <span lang="ar" dir="rtl">ميزانيتي</span></span><span class="project__visual-index" data-i18n="mizanyti.index">01 / MOBILE APPLICATION</span>
+              <span class="phone-composition"><img src="assets/images/mizanyti-insights-en.jpg" alt="" width="393" height="852" loading="lazy" data-slide="2"><img src="assets/images/mizanyti-overview-en.jpg" alt="" width="393" height="852" loading="lazy" data-slide="0"><img src="assets/images/mizanyti-overview-ar-dark.jpg" alt="" width="393" height="852" loading="lazy" data-slide="5"></span>
+              <span class="project__visual-bottom" data-i18n="mizanyti.tagline">YOUR MONEY. YOUR DEVICE. YOUR BUSINESS.</span><span class="project__view-pill"><span data-i18n="mizanyti.explore">Explore project</span><span aria-hidden="true" class="directional-arrow">↗</span></span>
+            </button>
+            <div class="project__details">
+              <div><p class="project__status" data-i18n="mizanyti.status">IN DEVELOPMENT</p><h3>Mizanyti <span lang="ar" dir="rtl">ميزانيتي</span></h3><p class="project__category" data-i18n="mizanyti.category">Mobile development / Personal finance</p></div>
+              <div class="project__description"><p data-i18n="mizanyti.description">A little clarity for your everyday spending. An iOS-first app that turns Saudi bank messages into a personal spending tracker. No account, no sync. Everything stays on your device.</p><ul class="tags" aria-label="Mizanyti technologies" data-i18n-aria-label="mizanyti.technologies"><li dir="auto">React Native</li><li dir="auto">Expo</li><li data-i18n="mizanyti.languages" dir="auto">Arabic &amp; English</li></ul><button class="text-link" type="button" data-gallery-open="" aria-haspopup="dialog"><span data-i18n="mizanyti.screens">View all 7 screens</span><span aria-hidden="true" class="directional-arrow">↗</span></button><p class="project__sample-note" data-i18n="mizanyti.sample">Screenshots use sample data.</p></div>
+            </div>
+          </article>
+          <article class="project reveal">
+            <a class="project__visual portfolio-visual" href="#home" aria-label="Revisit the personal portfolio at the top of the page" data-i18n-aria-label="portfolio.open">
+              <span class="project__visual-label" data-i18n="portfolio.label">THE PERSONAL PROJECT</span><span class="project__visual-index" data-i18n="portfolio.index">02 / WEB EXPERIENCE</span>
+              <div class="portfolio-window" aria-hidden="true"><div class="portfolio-window__bar"><span data-i18n="brand.full">khaled alanazi.</span><span data-i18n="portfolio.miniNav">Work &nbsp; About &nbsp; Contact ↗</span></div><div class="portfolio-window__canvas"><span><span data-i18n="hero.line1">Driven by</span><br><span data-i18n="hero.line2">curiosity.</span></span><small data-i18n="portfolio.craft">AN EXPLORATION IN CODE &amp; CRAFT</small></div></div>
+              <span class="project__visual-bottom" data-i18n="portfolio.tagline">A SMALL CORNER OF THE INTERNET. ENTIRELY MY OWN.</span><span class="project__view-pill"><span data-i18n="portfolio.here">You’re here</span><span aria-hidden="true" class="directional-arrow">↗</span></span>
+            </a>
+            <div class="project__details"><div><p class="project__status" data-i18n="portfolio.status">LIVE — YOU’RE LOOKING AT IT</p><h3 data-i18n="portfolio.title">A space of my own.</h3><p class="project__category" data-i18n="portfolio.category">Web development / Personal portfolio</p></div><div class="project__description"><p data-i18n="portfolio.description">A home for the things I’m building and the person I’m becoming. A responsive, accessible portfolio made with the fundamentals: HTML, CSS and a little JavaScript.</p><ul class="tags" aria-label="Portfolio technologies" data-i18n-aria-label="portfolio.technologies"><li dir="auto">HTML</li><li dir="auto">CSS</li><li dir="auto">JavaScript</li></ul></div></div>
+          </article>
+        </div>
+        <div class="work-footnote reveal"><p data-i18n="work.more">There’s always something in the works.</p><a class="pill" href="https://github.com/howiskhaled" target="_blank" rel="noopener noreferrer"><span data-i18n="work.github">More on GitHub</span><span aria-hidden="true" class="directional-arrow">↗</span></a></div>
+      </div>
+    </section>
+    <section class="section skills-section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-marker reveal"><span data-i18n="skills.marker">03 / THE TOOLKIT</span><span data-i18n="skills.aside">ALWAYS A STUDENT</span></div>
+        <div class="skills-layout">
+          <div class="skills-intro reveal"><h2 id="skills-title"><span data-i18n="skills.line1">Good tools.</span><br><span data-i18n="skills.line2">New possibilities.</span></h2><p data-i18n="skills.intro">Not a finished list. These are the languages, tools and ideas I’m building experience with along the way.</p></div>
+          <div class="skill-list">
+            <article class="skill-row reveal"><span class="skill-row__number" data-number="1">01</span><div><h3 data-i18n="skills.web">For the web</h3><p dir="ltr">HTML / CSS / JavaScript</p></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
+            <article class="skill-row reveal"><span class="skill-row__number" data-number="2">02</span><div><h3 data-i18n="skills.mobile">For your pocket</h3><p dir="ltr">React Native / Expo</p></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
+            <article class="skill-row reveal"><span class="skill-row__number" data-number="3">03</span><div><h3 data-i18n="skills.code">Behind the scenes</h3><p dir="ltr">Python / Java</p></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
+            <article class="skill-row reveal"><span class="skill-row__number" data-number="4">04</span><div><h3 data-i18n="skills.foundation">A solid foundation</h3><p data-i18n="skills.systems">Linux / Git &amp; GitHub / Security fundamentals</p></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-marker reveal"><span data-i18n="contact.marker">04 / START A CONVERSATION</span><span data-i18n="contact.aside">GOOD THINGS BEGIN WITH HELLO</span></div>
+        <h2 class="contact-title reveal" id="contact-title"><span data-i18n="contact.line1">Something</span><br><span data-i18n="contact.line2">on your mind</span><span data-i18n="contact.question">?</span></h2>
+        <div class="contact-layout">
+          <div class="contact-copy reveal"><p><span data-i18n="contact.invite1">A project idea, a question, or a shared curiosity.</span><br><span data-i18n="contact.invite2">I’d like to hear it.</span></p><a class="pill" href="https://github.com/howiskhaled" target="_blank" rel="noopener noreferrer"><span data-i18n="contact.github">Find me on GitHub</span><span aria-hidden="true" class="directional-arrow">↗</span></a><p class="contact-note"><span data-i18n="contact.note1">The form is a local demo for now.</span><br><span data-i18n="contact.note2">To connect, find me on GitHub.</span></p></div>
+          <form class="form reveal" id="contact-form" novalidate="">
+            <div class="form__row"><div class="field"><label for="name" data-i18n="form.name">01 — YOUR NAME</label><input id="name" name="name" type="text" placeholder="What should I call you?" autocomplete="name" required="" minlength="2" maxlength="100" aria-describedby="name-error" data-i18n-placeholder="form.namePlaceholder" dir="auto"><p class="field__error" id="name-error" aria-live="polite"></p></div><div class="field"><label for="email" data-i18n="form.email">02 — YOUR EMAIL</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required="" maxlength="254" aria-describedby="email-error" dir="ltr"><p class="field__error" id="email-error" aria-live="polite"></p></div></div>
+            <div class="field"><label for="message" data-i18n="form.message">03 — WHAT ARE YOU THINKING?</label><textarea id="message" name="message" rows="3" placeholder="Tell me a little about it…" required="" minlength="10" maxlength="5000" aria-describedby="message-error" data-i18n-placeholder="form.messagePlaceholder" dir="auto"></textarea><p class="field__error" id="message-error" aria-live="polite"></p></div>
+            <div class="form__footer"><p data-i18n="form.note">Just a demo. Nothing is sent.</p><button class="pill" type="submit"><span data-i18n="form.submit">Preview message</span><span aria-hidden="true" class="directional-arrow">↗</span></button></div><p class="form__status" id="form-status" role="status"></p><noscript><p>This form needs JavaScript for its local preview. You can find me on GitHub above.</p></noscript>
+          </form>
+        </div>
+        <footer class="site-footer"><a class="footer-wordmark" href="#home" data-i18n="brand.full">khaled alanazi.</a><div class="footer-bottom"><p>© <span id="year">2026</span> <span data-i18n="footer.name">Khaled Alanazi</span></p><p data-i18n="footer.note">Made with care. Always evolving.</p><a href="#home"><span data-i18n="footer.top">Back to the top</span><span aria-hidden="true">↑</span></a></div></footer>
+      </div>
+    </section>
+  </main>
+  <dialog class="mobile-menu" id="mobile-menu" aria-label="Navigation" data-i18n-aria-label="nav.mobile"><div class="mobile-menu__top"><span data-i18n="brand.full">khaled alanazi.</span><div class="mobile-menu__actions"><button class="language-toggle" type="button" data-language-toggle="" lang="ar" dir="rtl" hidden="" aria-label="Switch to Arabic">العربية</button><button id="menu-close" type="button" aria-label="Close menu" data-i18n-aria-label="nav.close"><span data-i18n="close">Close</span><span aria-hidden="true">×</span></button></div></div><nav aria-label="Mobile" data-i18n-aria-label="nav.mobile"><a href="#projects"><span class="menu-number" data-number="1">01</span><span data-i18n="nav.work">Work</span><span class="directional-arrow" aria-hidden="true">↗</span></a><a href="#about"><span class="menu-number" data-number="2">02</span><span data-i18n="nav.about">About</span><span class="directional-arrow" aria-hidden="true">↗</span></a><a href="#skills"><span class="menu-number" data-number="3">03</span><span data-i18n="nav.toolkit">Toolkit</span><span class="directional-arrow" aria-hidden="true">↗</span></a><a href="#contact"><span class="menu-number" data-number="4">04</span><span data-i18n="nav.contact">Contact</span><span class="directional-arrow" aria-hidden="true">↗</span></a></nav><p data-i18n="menu.note">A curious mind. A builder at heart.</p></dialog>
+  <dialog class="lightbox" id="gallery" aria-label="Mizanyti screenshots" data-i18n-aria-label="gallery.label"><div class="lightbox__frame"><div class="lightbox__top"><p>Mizanyti <span lang="ar" dir="rtl">ميزانيتي</span></p><button class="lightbox__btn" type="button" data-gallery-close="" aria-label="Close gallery" data-i18n-aria-label="gallery.close"><span data-i18n="close">Close</span><span aria-hidden="true">×</span></button></div><figure class="lightbox__figure"><img id="gallery-image" src="assets/images/mizanyti-overview-en.jpg" alt="Mizanyti overview screen" width="393" height="852"><figcaption id="gallery-caption"></figcaption></figure><div class="lightbox__controls"><button class="lightbox__btn" type="button" id="gallery-prev" aria-label="Previous screenshot" data-i18n-aria-label="gallery.prev">←</button><p id="gallery-counter" aria-live="polite"></p><button class="lightbox__btn" type="button" id="gallery-next" aria-label="Next screenshot" data-i18n-aria-label="gallery.next">→</button></div><p class="lightbox__note" data-i18n="gallery.note">Sample data. Use the arrow keys or swipe to explore.</p></div></dialog>
+
+
+</body></html>
