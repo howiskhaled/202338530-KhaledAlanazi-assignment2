@@ -34,7 +34,17 @@ window.portfolioI18n = (() => {
       'gallery.caption6': 'Activity in Arabic and dark mode.',
       'toolkit.showingAll': 'Showing all {total} tools',
       'toolkit.showing': 'Showing {count} of {total} tools',
-      'toolkit.emptyTitle': 'No tool matches “{query}”.'
+      'toolkit.emptyTitle': 'No tool matches “{query}”.',
+      'curiosity.errorOffline': 'You seem to be offline.',
+      'curiosity.errorSlow': 'Wikipedia is taking too long to answer.',
+      'curiosity.errorFailed': 'Couldn’t fetch an article just now.',
+      'curiosity.next': 'Show me another',
+      'curiosity.finding': 'Finding…',
+      'curiosity.retry': 'Try again',
+      'curiosity.lang.en': 'English',
+      'curiosity.lang.ar': 'Arabic',
+      'curiosity.noteLive': 'A random article from the {lang} Wikipedia. I did not choose or check it.',
+      'curiosity.noteSaved': 'Saved from your last visit. Press the button for a fresh one.'
     },
     ar: {
       'page.title': 'خالد العنزي — فضولي يخلّيني أجرّب.',
@@ -111,7 +121,7 @@ window.portfolioI18n = (() => {
       'skills.code': 'خلف الكواليس',
       'skills.foundation': 'أساس أبني عليه',
       'skills.systems': 'Linux / Git وGitHub / أساسيات الأمن السيبراني',
-      'contact.marker': '٠٤ / خلّنا نسولف',
+      'contact.marker': '٠٥ / خلّنا نسولف',
       'contact.aside': 'البداية كلمة: هلا',
       'contact.line1': 'عندك',
       'contact.line2': 'فكرة ببالك',
@@ -179,7 +189,27 @@ window.portfolioI18n = (() => {
       'toolkit.reset': 'اعرض كل شي',
       'toolkit.showingAll': 'معروض كل الأدوات: {total}',
       'toolkit.showing': 'معروض {count} من {total} أدوات',
-      'toolkit.emptyTitle': 'ما لقيت أداة تطابق «{query}».'
+      'toolkit.emptyTitle': 'ما لقيت أداة تطابق «{query}».',
+      'nav.curiosity': 'الفضول',
+      'curiosity.marker': '٠٤ / الفضول مباشر',
+      'curiosity.aside': 'كل ضغطة فيها جديد',
+      'curiosity.line1': 'تعلّم شي',
+      'curiosity.line2': 'جديد اليوم.',
+      'curiosity.lead1': 'مقالة عشوائية من ويكيبيديا،',
+      'curiosity.lead2': 'لأن الفضول يبي له وقود.',
+      'curiosity.loading': 'أدوّر لك على شي يستاهل تعرفه…',
+      'curiosity.errorHint': 'تأكّد من الاتصال بالإنترنت، وبعدها اضغط «حاول مرة ثانية».',
+      'curiosity.read': 'اقرأ المقالة كاملة',
+      'curiosity.errorOffline': 'يبدو إنك مو متصل بالإنترنت.',
+      'curiosity.errorSlow': 'ويكيبيديا تأخرت في الرد.',
+      'curiosity.errorFailed': 'ما قدرت أجيب لك مقالة الحين.',
+      'curiosity.next': 'عطني غيرها',
+      'curiosity.finding': 'أدوّر…',
+      'curiosity.retry': 'حاول مرة ثانية',
+      'curiosity.lang.en': 'الإنجليزية',
+      'curiosity.lang.ar': 'العربية',
+      'curiosity.noteLive': 'مقالة عشوائية من ويكيبيديا {lang}. ما اخترتها ولا راجعتها.',
+      'curiosity.noteSaved': 'محفوظة من زيارتك الأخيرة. اضغط الزر عشان تجيب وحدة جديدة.'
     }
   };
   const bindings = [];

@@ -311,6 +311,169 @@ function initToolkit() {
   render();
 }
 
+// Wikipedia content is third-party data: it is only ever written with textContent,
+// and links and images are accepted only from Wikipedia's own hosts.
+const FACT_STORAGE_KEY = 'curiosity-fact';
+const FACT_TIMEOUT_MS = 10000;
+const FACT_MIN_EXTRACT = 80;
+
+function trustedUrl(value, isAllowedHost) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && isAllowedHost(url.hostname) ? url.href : '';
+  } catch (error) {
+    return '';
+  }
+}
+const isWikipediaHost = (host) => host === 'wikipedia.org' || host.endsWith('.wikipedia.org');
+const isWikimediaMediaHost = (host) => host === 'upload.wikimedia.org';
+
+// Returns a clean fact object, or null when the candidate is missing or unsafe.
+function cleanFact(candidate) {
+  if (!candidate || typeof candidate.title !== 'string' || typeof candidate.extract !== 'string') return null;
+  const extract = candidate.extract.trim();
+  const url = trustedUrl(candidate.url, isWikipediaHost);
+  if (extract.length < FACT_MIN_EXTRACT || !url) return null;
+  return {
+    title: candidate.title,
+    description: typeof candidate.description === 'string' ? candidate.description : '',
+    extract,
+    image: trustedUrl(candidate.image, isWikimediaMediaHost),
+    url,
+    lang: candidate.lang === 'ar' ? 'ar' : 'en',
+    dir: candidate.dir === 'rtl' ? 'rtl' : 'ltr'
+  };
+}
+
+// Maps the Wikipedia REST "summary" response to our own shape.
+function factFromSummary(summary) {
+  if (!summary || summary.type === 'disambiguation') return null;
+  return cleanFact({
+    title: summary.title,
+    description: summary.description,
+    extract: summary.extract,
+    image: summary.thumbnail && summary.thumbnail.source,
+    url: summary.content_urls && summary.content_urls.desktop && summary.content_urls.desktop.page,
+    lang: summary.lang,
+    dir: summary.dir
+  });
+}
+
+async function fetchRandomFact(language, signal) {
+  // Some random pages are stubs or disambiguation pages, so try a few times.
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const response = await fetch(`https://${language}.wikipedia.org/api/rest_v1/page/random/summary`, {
+      signal,
+      headers: { Accept: 'application/json' }
+    });
+    if (!response.ok) throw new Error(`Wikipedia answered with HTTP ${response.status}`);
+    const fact = factFromSummary(await response.json());
+    if (fact) return fact;
+  }
+  throw new Error('No suitable article found');
+}
+
+function initCuriosity() {
+  const card = document.getElementById('fact');
+  const panels = {
+    loading: document.getElementById('fact-loading'),
+    error: document.getElementById('fact-error'),
+    ready: document.getElementById('fact-content')
+  };
+  const errorTitle = document.getElementById('fact-error-title');
+  const figure = document.getElementById('fact-figure');
+  const image = document.getElementById('fact-image');
+  const button = document.getElementById('fact-next');
+  const buttonLabel = document.getElementById('fact-next-label');
+  const note = document.getElementById('fact-note');
+  let fact = null;
+  let fromSavedVisit = false;
+  let status = 'loading';
+  let errorKind = 'failed';
+  let requestId = 0;
+
+  try { fact = cleanFact(JSON.parse(localStorage.getItem(FACT_STORAGE_KEY))); } catch (error) { /* No saved article. */ }
+  if (fact) {
+    status = 'ready';
+    fromSavedVisit = true;
+  }
+
+  function render() {
+    Object.entries(panels).forEach(([name, panel]) => {
+      const visible = name === status;
+      if (panel.hidden === visible) {
+        panel.hidden = !visible;
+        if (visible && name === 'ready') playEntrance(panel);
+      }
+    });
+    card.setAttribute('aria-busy', String(status === 'loading'));
+    button.setAttribute('aria-disabled', String(status === 'loading'));
+    buttonLabel.textContent = i18n.t(status === 'loading' ? 'curiosity.finding' : status === 'error' ? 'curiosity.retry' : 'curiosity.next');
+    if (status === 'error') {
+      errorTitle.textContent = i18n.t({ offline: 'curiosity.errorOffline', slow: 'curiosity.errorSlow' }[errorKind] || 'curiosity.errorFailed');
+    }
+    if (status === 'ready' && fact) {
+      panels.ready.lang = fact.lang;
+      panels.ready.dir = fact.dir;
+      document.getElementById('fact-title').textContent = fact.title;
+      document.getElementById('fact-description').textContent = fact.description;
+      document.getElementById('fact-extract').textContent = fact.extract;
+      document.getElementById('fact-link').href = fact.url;
+      figure.hidden = !fact.image;
+      panels.ready.classList.toggle('fact__content--text', !fact.image);
+      if (fact.image && image.getAttribute('src') !== fact.image) image.src = fact.image;
+      note.textContent = fromSavedVisit
+        ? i18n.t('curiosity.noteSaved')
+        : i18n.t('curiosity.noteLive', { lang: i18n.t(`curiosity.lang.${fact.lang}`) });
+    } else {
+      note.textContent = '';
+    }
+  }
+
+  async function load() {
+    if (status === 'loading' && requestId > 0) return;
+    const id = ++requestId;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FACT_TIMEOUT_MS);
+    status = 'loading';
+    render();
+    try {
+      const next = await fetchRandomFact(i18n.language, controller.signal);
+      if (id !== requestId) return;
+      fact = next;
+      fromSavedVisit = false;
+      status = 'ready';
+      try { localStorage.setItem(FACT_STORAGE_KEY, JSON.stringify(fact)); } catch (error) { /* Saving is optional. */ }
+    } catch (error) {
+      if (id !== requestId) return;
+      errorKind = !navigator.onLine ? 'offline' : error.name === 'AbortError' ? 'slow' : 'failed';
+      status = 'error';
+    } finally {
+      clearTimeout(timer);
+      if (id === requestId) { requestId = 0; render(); }
+    }
+  }
+
+  image.addEventListener('error', () => { figure.hidden = true; panels.ready.classList.add('fact__content--text'); });
+  button.addEventListener('click', () => { if (status !== 'loading') load(); });
+  document.addEventListener('languagechange', render);
+  render();
+
+  // Without a saved article, fetch the first one only when the section nears the viewport.
+  if (!fact) {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        load();
+      }, { rootMargin: '200px 0px' });
+      observer.observe(card);
+    } else {
+      load();
+    }
+  }
+}
+
 const validators = {
   name: (value) => value.length >= 2 ? '' : 'error.name',
   email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'error.email',
@@ -371,5 +534,6 @@ initMotion();
 initMobileMenu();
 initGallery();
 initToolkit();
+initCuriosity();
 initContactForm();
 initScrollReveal();

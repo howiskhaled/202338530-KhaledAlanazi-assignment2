@@ -105,9 +105,30 @@
         </div>
       </div>
     </section>
+    <section class="section curiosity-section" id="curiosity" aria-labelledby="curiosity-title">
+      <div class="container">
+        <div class="section-marker reveal"><span data-i18n="curiosity.marker">04 / CURIOSITY, LIVE</span><span data-i18n="curiosity.aside">A NEW ONE EVERY CLICK</span></div>
+        <div class="section-heading reveal"><h2 id="curiosity-title"><span data-i18n="curiosity.line1">Learn something</span><br><span class="muted" data-i18n="curiosity.line2">new today.</span></h2><p><span data-i18n="curiosity.lead1">A random Wikipedia article,</span><br><span data-i18n="curiosity.lead2">because curiosity needs fuel.</span></p></div>
+        <article class="fact reveal" id="fact" aria-live="polite" aria-busy="true">
+          <div class="fact__state" id="fact-loading"><span class="skeleton" aria-hidden="true"></span><span class="skeleton skeleton--short" aria-hidden="true"></span><span class="skeleton" aria-hidden="true"></span><p data-i18n="curiosity.loading">Finding something worth knowing…</p></div>
+          <div class="fact__state" id="fact-error" hidden><p class="fact__state-title" id="fact-error-title"></p><p data-i18n="curiosity.errorHint">Check your connection, then press “Try again”.</p></div>
+          <div class="fact__content" id="fact-content" hidden>
+            <figure class="fact__figure" id="fact-figure"><img id="fact-image" alt="" loading="lazy" referrerpolicy="no-referrer"></figure>
+            <div class="fact__body">
+              <p class="fact__description" id="fact-description"></p>
+              <h3 class="fact__title" id="fact-title"></h3>
+              <p class="fact__extract" id="fact-extract"></p>
+              <a class="text-link" id="fact-link" href="https://www.wikipedia.org/" target="_blank" rel="noopener noreferrer"><span data-i18n="curiosity.read">Read the full article</span><span aria-hidden="true" class="directional-arrow">↗</span></a>
+            </div>
+          </div>
+          <noscript><p class="fact__state">The Wikipedia feature needs JavaScript. You can still explore the rest of the page.</p></noscript>
+        </article>
+        <div class="fact-actions reveal"><button class="pill" type="button" id="fact-next"><span id="fact-next-label">Show me another</span><span aria-hidden="true" class="directional-arrow">↗</span></button><p class="fact-note" id="fact-note"></p></div>
+      </div>
+    </section>
     <section class="section contact-section" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <div class="section-marker reveal"><span data-i18n="contact.marker">04 / START A CONVERSATION</span><span data-i18n="contact.aside">GOOD THINGS BEGIN WITH HELLO</span></div>
+        <div class="section-marker reveal"><span data-i18n="contact.marker">05 / START A CONVERSATION</span><span data-i18n="contact.aside">GOOD THINGS BEGIN WITH HELLO</span></div>
         <h2 class="contact-title reveal" id="contact-title"><span data-i18n="contact.line1">Something</span><br><span data-i18n="contact.line2">on your mind</span><span data-i18n="contact.question">?</span></h2>
         <div class="contact-layout">
           <div class="contact-copy reveal"><p><span data-i18n="contact.invite1">A project idea, a question, or a shared curiosity.</span><br><span data-i18n="contact.invite2">I’d like to hear it.</span></p><a class="pill" href="https://github.com/howiskhaled" target="_blank" rel="noopener noreferrer"><span data-i18n="contact.github">Find me on GitHub</span><span aria-hidden="true" class="directional-arrow">↗</span></a><p class="contact-note"><span data-i18n="contact.note1">The form is a local demo for now.</span><br><span data-i18n="contact.note2">To connect, find me on GitHub.</span></p></div>
@@ -121,7 +142,7 @@
       </div>
     </section>
   </main>
-  <dialog class="mobile-menu" id="mobile-menu" aria-label="Navigation" data-i18n-aria-label="nav.mobile"><div class="mobile-menu__top"><span data-i18n="brand.full">khaled alanazi.</span><div class="mobile-menu__actions"><button class="language-toggle" type="button" data-language-toggle="" lang="ar" dir="rtl" hidden="" aria-label="Switch to Arabic">العربية</button><button id="menu-close" type="button" aria-label="Close menu" data-i18n-aria-label="nav.close"><span data-i18n="close">Close</span><span aria-hidden="true">×</span></button></div></div><nav aria-label="Mobile" data-i18n-aria-label="nav.mobile"><a href="#projects"><span class="menu-number" data-number="1">01</span><span data-i18n="nav.work">Work</span><span class="directional-arrow" aria-hidden="true">↗</span></a><a href="#about"><span class="menu-number" data-number="2">02</span><span data-i18n="nav.about">About</span><span class="directional-arrow" aria-hidden="true">↗</span></a><a href="#skills"><span class="menu-number" data-number="3">03</span><span data-i18n="nav.toolkit">Toolkit</span><span class="directional-arrow" aria-hidden="true">↗</span></a><a href="#contact"><span class="menu-number" data-number="4">04</span><span data-i18n="nav.contact">Contact</span><span class="directional-arrow" aria-hidden="true">↗</span></a></nav><p data-i18n="menu.note">A curious mind. A builder at heart.</p></dialog>
+  <dialog class="mobile-menu" id="mobile-menu" aria-label="Navigation" data-i18n-aria-label="nav.mobile"><div class="mobile-menu__top"><span data-i18n="brand.full">khaled alanazi.</span><div class="mobile-menu__actions"><button class="language-toggle" type="button" data-language-toggle="" lang="ar" dir="rtl" hidden="" aria-label="Switch to Arabic">العربية</button><button id="menu-close" type="button" aria-label="Close menu" data-i18n-aria-label="nav.close"><span data-i18n="close">Close</span><span aria-hidden="true">×</span></button></div></div><nav aria-label="Mobile" data-i18n-aria-label="nav.mobile"><a href="#projects"><span class="menu-number" data-number="1">01</span><span data-i18n="nav.work">Work</span><span class="directional-arrow" aria-hidden="true">↗</span></a><a href="#about"><span class="menu-number" data-number="2">02</span><span data-i18n="nav.about">About</span><span class="directional-arrow" aria-hidden="true">↗</span></a><a href="#skills"><span class="menu-number" data-number="3">03</span><span data-i18n="nav.toolkit">Toolkit</span><span class="directional-arrow" aria-hidden="true">↗</span></a><a href="#curiosity"><span class="menu-number" data-number="4">04</span><span data-i18n="nav.curiosity">Curiosity</span><span class="directional-arrow" aria-hidden="true">↗</span></a><a href="#contact"><span class="menu-number" data-number="5">05</span><span data-i18n="nav.contact">Contact</span><span class="directional-arrow" aria-hidden="true">↗</span></a></nav><p data-i18n="menu.note">A curious mind. A builder at heart.</p></dialog>
   <dialog class="lightbox" id="gallery" aria-label="Mizanyti screenshots" data-i18n-aria-label="gallery.label"><div class="lightbox__frame"><div class="lightbox__top"><p>Mizanyti <span lang="ar" dir="rtl">ميزانيتي</span></p><button class="lightbox__btn" type="button" data-gallery-close="" aria-label="Close gallery" data-i18n-aria-label="gallery.close"><span data-i18n="close">Close</span><span aria-hidden="true">×</span></button></div><figure class="lightbox__figure"><img id="gallery-image" src="assets/images/mizanyti-overview-en.jpg" alt="Mizanyti overview screen" width="393" height="852"><figcaption id="gallery-caption"></figcaption></figure><div class="lightbox__controls"><button class="lightbox__btn" type="button" id="gallery-prev" aria-label="Previous screenshot" data-i18n-aria-label="gallery.prev">←</button><p id="gallery-counter" aria-live="polite"></p><button class="lightbox__btn" type="button" id="gallery-next" aria-label="Next screenshot" data-i18n-aria-label="gallery.next">→</button></div><p class="lightbox__note" data-i18n="gallery.note">Sample data. Use the arrow keys or swipe to explore.</p></div></dialog>
 
 
