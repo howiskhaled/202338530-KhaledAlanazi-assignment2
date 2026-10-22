@@ -82,12 +82,25 @@
       <div class="container">
         <div class="section-marker reveal"><span data-i18n="skills.marker">03 / THE TOOLKIT</span><span data-i18n="skills.aside">ALWAYS A STUDENT</span></div>
         <div class="skills-layout">
-          <div class="skills-intro reveal"><h2 id="skills-title"><span data-i18n="skills.line1">Good tools.</span><br><span data-i18n="skills.line2">New possibilities.</span></h2><p data-i18n="skills.intro">Not a finished list. These are the languages, tools and ideas I’m building experience with along the way.</p></div>
-          <div class="skill-list">
-            <article class="skill-row reveal"><span class="skill-row__number" data-number="1">01</span><div><h3 data-i18n="skills.web">For the web</h3><p dir="ltr">HTML / CSS / JavaScript</p></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
-            <article class="skill-row reveal"><span class="skill-row__number" data-number="2">02</span><div><h3 data-i18n="skills.mobile">For your pocket</h3><p dir="ltr">React Native / Expo</p></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
-            <article class="skill-row reveal"><span class="skill-row__number" data-number="3">03</span><div><h3 data-i18n="skills.code">Behind the scenes</h3><p dir="ltr">Python / Java</p></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
-            <article class="skill-row reveal"><span class="skill-row__number" data-number="4">04</span><div><h3 data-i18n="skills.foundation">A solid foundation</h3><p data-i18n="skills.systems">Linux / Git &amp; GitHub / Security fundamentals</p></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
+          <div class="skills-intro reveal"><h2 id="skills-title"><span data-i18n="skills.line1">Good tools.</span><br><span data-i18n="skills.line2">New possibilities.</span></h2><p data-i18n="skills.intro">Not a finished list. These are the languages, tools and ideas I’m building experience with along the way.</p>
+            <div class="toolkit-controls" role="search" aria-label="Toolkit" data-i18n-aria-label="toolkit.label">
+              <div class="field toolkit-search"><label for="toolkit-search" data-i18n="toolkit.searchLabel">SEARCH THE TOOLKIT</label><input id="toolkit-search" type="search" placeholder="Try “Git” or “Python”" autocomplete="off" spellcheck="false" aria-controls="skill-list" data-i18n-placeholder="toolkit.searchPlaceholder" dir="auto"></div>
+              <div class="chip-group" role="group" aria-label="Filter by category" data-i18n-aria-label="toolkit.filterLabel">
+                <button class="chip" type="button" data-filter="all" aria-pressed="true" data-i18n="toolkit.all">All</button><button class="chip" type="button" data-filter="web" aria-pressed="false" data-i18n="toolkit.web">Web</button><button class="chip" type="button" data-filter="mobile" aria-pressed="false" data-i18n="toolkit.mobile">Mobile</button><button class="chip" type="button" data-filter="code" aria-pressed="false" data-i18n="toolkit.code">Code</button><button class="chip" type="button" data-filter="foundation" aria-pressed="false" data-i18n="toolkit.foundation">Foundations</button>
+              </div>
+              <p class="toolkit-count" id="toolkit-count" role="status"></p>
+            </div>
+          </div>
+          <div class="skill-list" id="skill-list">
+            <article class="skill-row reveal" data-category="web"><span class="skill-row__number" data-number="1">01</span><div><h3 data-i18n="skills.web">For the web</h3><ul class="tool-list" dir="ltr"><li data-keywords="web markup frontend">HTML</li><li data-keywords="web styles frontend">CSS</li><li data-keywords="js web frontend">JavaScript</li></ul></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
+            <article class="skill-row reveal" data-category="mobile"><span class="skill-row__number" data-number="2">02</span><div><h3 data-i18n="skills.mobile">For your pocket</h3><ul class="tool-list" dir="ltr"><li data-keywords="mobile ios app">React Native</li><li data-keywords="mobile ios app">Expo</li></ul></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
+            <article class="skill-row reveal" data-category="code"><span class="skill-row__number" data-number="3">03</span><div><h3 data-i18n="skills.code">Behind the scenes</h3><ul class="tool-list" dir="ltr"><li data-keywords="scripting">Python</li><li data-keywords="backend">Java</li></ul></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
+            <article class="skill-row reveal" data-category="foundation"><span class="skill-row__number" data-number="4">04</span><div><h3 data-i18n="skills.foundation">A solid foundation</h3><ul class="tool-list"><li data-keywords="terminal os">Linux</li><li data-keywords="version control">Git &amp; GitHub</li><li data-i18n="skills.security" data-keywords="security cybersecurity">Security fundamentals</li></ul></div><span class="skill-row__mark" aria-hidden="true">↗</span></article>
+            <div class="empty-state" id="toolkit-empty" hidden>
+              <p class="empty-state__title" id="toolkit-empty-title"></p>
+              <p class="empty-state__hint" data-i18n="toolkit.emptyHint">Try a shorter word, or pick another category.</p>
+              <button class="chip" type="button" id="toolkit-reset" data-i18n="toolkit.reset">Show everything</button>
+            </div>
           </div>
         </div>
       </div>
