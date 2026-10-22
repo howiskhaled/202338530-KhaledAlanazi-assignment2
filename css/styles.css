@@ -194,7 +194,7 @@ button:disabled { cursor: default; }
 .skill-row h3 { font-size: 24px; line-height: 1.2; letter-spacing: -.035em; }
 .tool-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tool-list li { padding: 4px 12px; border: 1px solid var(--line); border-radius: var(--radius-pill); font-size: 11px; line-height: 1.5; color: var(--muted); transition: color .4s, border-color .4s, transform .8s var(--ease); }
-.tool-list li:hover { color: #fff7df; border-color: var(--accent); transform: translateY(-2px); }
+.tool-list li:hover { color: #fff7df; border-color: var(--accent); transform: translateY(-4px); }
 .skill-row__mark { font-size: 22px; margin-inline-start: auto; color: #c3dd9a; }
 .skill-row:nth-child(2) .skill-row__mark { color: #f1b495; }
 .skill-row:nth-child(3) .skill-row__mark { color: #e3c4de; }
@@ -207,7 +207,7 @@ button:disabled { cursor: default; }
 .toolkit-search input::-webkit-search-cancel-button { -webkit-appearance: none; }
 .chip-group { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { min-height: 36px; padding: 6px 16px; border: 1px solid var(--line); border-radius: var(--radius-pill); font-size: 12px; line-height: 1.4; transition: color .4s, background-color .4s, border-color .4s, transform .8s var(--ease); }
-.chip:hover { border-color: var(--accent); transform: translateY(-2px); }
+.chip:hover { border-color: var(--accent); transform: translateY(-4px); }
 .chip[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: #193e35; }
 .toolkit-count { min-height: 1.6em; margin-top: 20px; font-size: 11px; color: var(--muted); }
 .empty-state { padding: 32px 0; border-top: 1px solid var(--line); }

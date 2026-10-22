@@ -3,7 +3,7 @@
 **Student:** Khaled Alanazi (202338530)
 **Assignment:** Assignment 2: Interactive Features
 
-> **TODO (Khaled) before you submit.** Three parts of this report can only be written by you, because they describe your own work and understanding. They are marked with `TODO`: the "What I changed after the AI draft" table (section 5), the "Learning outcomes" paragraph (section 7) and the date in the declaration (section 8). Delete this box and every `TODO` line when you have filled them in. Please also check that every statement in the report is true for what you actually did.
+> **TODO (Khaled) before you submit.** Set the date in the declaration (section 8) on the day you submit, and read the whole report once to check that every statement is true. Then delete this box.
 
 ---
 
@@ -31,7 +31,7 @@ I did not use any other AI tool for this assignment.
 
 1. **Reading the brief and my existing code.** Claude read the assignment and cloned my Assignment 1 repository to see what already existed (theme toggle, greeting, gallery, validated form, English / Arabic switcher). That mattered because Assignment 1 already had a lot of JavaScript, so Assignment 2 had to add something clearly new.
 2. **Dynamic content: toolkit explorer.** It turned the four toolkit rows into individual tool tags and added a live search box, category chips, a result count and an empty state. It added hidden search aliases (`js`, `ios`, `terminal`, ...) so the search is more useful than plain text matching.
-3. **Data handling: Wikipedia API.** It added a "Learn something new today" section that fetches a random article summary from the Wikipedia REST API in the site's current language, saves the last article in `localStorage`, and handles loading, offline, timeout and failure states with a "Try again" button.
+3. **Data handling: Wikipedia API.** It added a "Something new to learn" section that fetches a random article summary from the Wikipedia REST API in the site's current language, saves the last article in `localStorage`, and handles loading, offline, timeout and failure states with a "Try again" button.
 4. **Animation.** It added entrance animations for filtered items and new articles, a loading skeleton, sliding form messages and hover effects, all disabled by `prefers-reduced-motion`.
 5. **User feedback.** It added the live character hint on the contact form and the friendly messages described above, in English and Arabic.
 6. **Security review of its own feature.** Because the Wikipedia section shows text and links from another website, Claude wrote the code so that article text is only inserted with `textContent` and links and images are accepted only from Wikipedia's own hosts. It tested that a `javascript:` link is rejected.
@@ -76,10 +76,22 @@ These were made by the AI during the conversation, and I need to review them (se
 
 ## 5. What I changed after the AI draft
 
-> **TODO (Khaled):** Fill this table with edits you actually made after the AI wrote the first version, for example changing wording or colours, adding or removing a tool, changing the Arabic text so it sounds like you, adjusting an animation, or fixing something you found. The assignment requires that you **edit or improve** the AI output, and the report must show it. If you have not changed anything yet, do that first, then list it here.
+I chose these changes after reading the AI's first version. Claude Code typed the edits for me, because I told it exactly what I wanted.
 
 | File | What I changed | Why |
 | --- | --- | --- |
+| `index.html`, `js/i18n.js` | Changed the Wikipedia section heading from "Learn something new today." to "Something new to learn." and updated the Arabic heading to match | I liked this wording more, and it sounds more like me |
+| `css/styles.css` | Made the hover lift on the filter chips and the tool tags bigger, from 2 px to 4 px | The 2 px lift was too small to notice |
+| `README.md`, `docs/` | Updated the documentation so it uses the new heading and the 4 px hover lift | The docs have to match the code |
+
+I also tried to change the fetching code (`fetchRandomFact()`) by myself, but I did not understand it well enough, so I did not change it. I need to keep studying that part (see section 6).
+
+My own checks:
+
+- I opened the site on my phone and used it there.
+- I ran the offline test from the README (Network tab set to Offline, then pressing "Show me another") and saw the friendly error message and the "Try again" button.
+
+--- | --- | --- |
 | TODO | TODO | TODO |
 
 My own checks (TODO: add what you tested yourself, for example other browsers, your phone, the offline test from the README):
@@ -109,7 +121,7 @@ I should be able to explain each of these without the AI:
 
 ## 7. Learning outcomes
 
-> **TODO (Khaled):** Write 4 to 6 sentences in your own words: what you learned from this assignment (for example `fetch`, error states, `localStorage`, filtering), what was confusing at first, and what you would do differently. Do not copy this from the AI.
+The hardest part for me was the `fetch` code. It was difficult to picture how the page asks Wikipedia for data, waits for the answer, and then decides what to show when it succeeds, is slow or fails. I tried to change the fetching code by myself, but I did not understand it, so I did not change it. The filter logic was also hard at first, because one function has to work out what is visible from both the search text and the chosen category. What I did understand well is why the site needs loading, error and empty messages, so the visitor always knows what happened and what to do next. I also learned how to test the error state by switching the browser to Offline. Next time I want to practise `fetch` on a small example before using it in my portfolio.
 
 ---
 

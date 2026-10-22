@@ -113,7 +113,7 @@ The form is still a local demo. New in Assignment 2: the message field shows a l
 | New Wikipedia article | Same rise and fade | `playEntrance()` on the content block |
 | Loading | Shimmer on the skeleton lines | `@keyframes shimmer` |
 | Form errors and success | Slide down and fade in | `@keyframes message-in` on `.field__error` and `.form__status`, which replay because those elements switch from `display: none` to visible |
-| Chips and tool tags | Lift by 2 px and change border colour on hover | `transition` on `transform` and `border-color` |
+| Chips and tool tags | Lift by 4 px and change border colour on hover | `transition` on `transform` and `border-color` |
 
 Only `opacity` and `transform` are animated, apart from the shimmer, which moves a background. With `prefers-reduced-motion: reduce`, the existing global rule disables all animations, and `playEntrance()` returns early.
 

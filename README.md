@@ -9,8 +9,8 @@ My personal portfolio, built with plain **HTML, CSS and JavaScript**. This is As
 | Requirement | What I built |
 | --- | --- |
 | **Dynamic content** | **Toolkit explorer.** The tools I am learning are now individual tags. Type in the search box and the list filters live (try `js`, `ios`, `git` or `terminal`), or pick a category chip (Web, Mobile, Code, Foundations). The two work together, and a count says how many tools are showing. |
-| **Data handling** | **"Learn something new today."** A button fetches a random article from the public **Wikipedia API**, in the language the site is currently showing. The last article is saved in `localStorage`, so the next visit starts with something to read. Theme, language and motion preferences are also saved. |
-| **Animation and transitions** | Filtered items rise and fade back in, new articles and form messages slide in, loading shows a shimmering skeleton, and chips and tags lift on hover. Everything respects `prefers-reduced-motion`. |
+| **Data handling** | **"Something new to learn."** A button fetches a random article from the public **Wikipedia API**, in the language the site is currently showing. The last article is saved in `localStorage`, so the next visit starts with something to read. Theme, language and motion preferences are also saved. |
+| **Animation and transitions** | Filtered items rise and fade back in, new articles and form messages slide in, loading shows a shimmering skeleton, and chips and tags lift 4 px on hover. Everything respects `prefers-reduced-motion`. |
 | **Error handling and feedback** | A loading state, friendly messages for offline, slow and failed requests (each with a "Try again" button), an empty state ("No tool matches ...") with a reset button, and a live hint on the contact form that counts the characters still needed. |
 | **AI enhancement** | Built with Claude Code. See [AI usage summary](#ai-usage-summary) and [`docs/ai-usage-report.md`](docs/ai-usage-report.md). |
 
@@ -20,7 +20,7 @@ Everything from Assignment 1 is still here: the light and dark themes, the Engli
 
 1. **Search the toolkit.** Scroll to *The Toolkit* and type in the search box. Press `Esc` to clear it. If nothing matches, press **Show everything**.
 2. **Filter by category.** Press a chip. The pressed chip is highlighted.
-3. **Read something new.** Scroll to *Learn something new today* and press **Show me another**. If the request fails, the page tells you why and the button becomes **Try again**.
+3. **Read something new.** Scroll to *Something new to learn* and press **Show me another**. If the request fails, the page tells you why and the button becomes **Try again**.
 4. **Switch language.** Press the language button in the header. The labels change right away, and the next Wikipedia article comes from the Arabic or English Wikipedia to match.
 
 ## Tech stack
