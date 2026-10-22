@@ -44,7 +44,9 @@ window.portfolioI18n = (() => {
       'curiosity.lang.en': 'English',
       'curiosity.lang.ar': 'Arabic',
       'curiosity.noteLive': 'A random article from the {lang} Wikipedia. I did not choose or check it.',
-      'curiosity.noteSaved': 'Saved from your last visit. Press the button for a fresh one.'
+      'curiosity.noteSaved': 'Saved from your last visit. Press the button for a fresh one.',
+      'form.hintMore': '{count} more characters to go.',
+      'form.hintOk': 'That’s enough to get started.'
     },
     ar: {
       'page.title': 'خالد العنزي — فضولي يخلّيني أجرّب.',
@@ -209,7 +211,9 @@ window.portfolioI18n = (() => {
       'curiosity.lang.en': 'الإنجليزية',
       'curiosity.lang.ar': 'العربية',
       'curiosity.noteLive': 'مقالة عشوائية من ويكيبيديا {lang}. ما اخترتها ولا راجعتها.',
-      'curiosity.noteSaved': 'محفوظة من زيارتك الأخيرة. اضغط الزر عشان تجيب وحدة جديدة.'
+      'curiosity.noteSaved': 'محفوظة من زيارتك الأخيرة. اضغط الزر عشان تجيب وحدة جديدة.',
+      'form.hintMore': 'باقي {count} من الأحرف.',
+      'form.hintOk': 'كذا يكفي للبداية.'
     }
   };
   const bindings = [];
