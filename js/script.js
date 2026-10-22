@@ -228,6 +228,89 @@ function initGallery() {
   renderLabels();
 }
 
+// Plays the entrance animation again each time an element becomes visible.
+function playEntrance(element, order = 0) {
+  if (motionPreference.matches) return;
+  element.style.setProperty('--enter-delay', `${order * 45}ms`);
+  element.classList.remove('is-entering');
+  void element.offsetWidth; // Restart the CSS animation if it was still running.
+  element.classList.add('is-entering');
+  element.addEventListener('animationend', () => element.classList.remove('is-entering'), { once: true });
+}
+
+function initToolkit() {
+  const search = document.getElementById('toolkit-search');
+  const chips = [...document.querySelectorAll('[data-filter]')];
+  const rows = [...document.querySelectorAll('.skill-row')];
+  const tools = [...document.querySelectorAll('.tool-list li')];
+  const count = document.getElementById('toolkit-count');
+  const empty = document.getElementById('toolkit-empty');
+  const emptyTitle = document.getElementById('toolkit-empty-title');
+  const state = { category: 'all', query: '' };
+  const normalize = (value) => value.trim().toLocaleLowerCase();
+
+  // A tool matches on its visible text or on its hidden aliases (e.g. "js", "ios", "terminal").
+  const matches = (tool) => !state.query
+    || normalize(`${tool.textContent} ${tool.dataset.keywords || ''}`).includes(state.query);
+
+  function setVisible(element, visible, order) {
+    const wasHidden = element.hidden;
+    element.hidden = !visible;
+    if (visible && wasHidden) playEntrance(element, order);
+  }
+
+  function render() {
+    let shown = 0;
+    let order = 0;
+    rows.forEach((row) => {
+      const inCategory = state.category === 'all' || row.dataset.category === state.category;
+      let rowHasMatch = false;
+      row.querySelectorAll('.tool-list li').forEach((tool) => {
+        const visible = inCategory && matches(tool);
+        tool.hidden = !visible;
+        if (visible) { rowHasMatch = true; shown += 1; }
+      });
+      setVisible(row, rowHasMatch, order);
+      if (rowHasMatch) order += 1;
+    });
+    const filtered = state.category !== 'all' || state.query;
+    count.textContent = shown === 0 ? '' : i18n.t(filtered ? 'toolkit.showing' : 'toolkit.showingAll', {
+      count: i18n.number(shown),
+      total: i18n.number(tools.length)
+    });
+    emptyTitle.textContent = i18n.t('toolkit.emptyTitle', { query: `⁨${search.value.trim()}⁩` });
+    setVisible(empty, shown === 0, 0);
+    chips.forEach((chip) => chip.setAttribute('aria-pressed', String(chip.dataset.filter === state.category)));
+  }
+
+  search.addEventListener('input', () => {
+    state.query = normalize(search.value);
+    render();
+  });
+  search.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && search.value) {
+      event.preventDefault();
+      search.value = '';
+      state.query = '';
+      render();
+    }
+  });
+  chips.forEach((chip) => chip.addEventListener('click', () => {
+    state.category = chip.dataset.filter;
+    render();
+  }));
+  document.getElementById('toolkit-reset').addEventListener('click', () => {
+    search.value = '';
+    state.query = '';
+    state.category = 'all';
+    render();
+    search.focus();
+  });
+  // Tool names change with the language, so matching and the count text are redone.
+  document.addEventListener('languagechange', render);
+  render();
+}
+
 const validators = {
   name: (value) => value.length >= 2 ? '' : 'error.name',
   email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'error.email',
@@ -287,5 +370,6 @@ initHeader();
 initMotion();
 initMobileMenu();
 initGallery();
+initToolkit();
 initContactForm();
 initScrollReveal();

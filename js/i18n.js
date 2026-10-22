@@ -31,7 +31,10 @@ window.portfolioI18n = (() => {
       'gallery.caption3': 'My plan: a savings target that shows how it was calculated.',
       'gallery.caption4': 'Arabic: the whole app switches to right-to-left, layout included.',
       'gallery.caption5': 'Arabic in dark mode, with Arabic-Indic numerals and Hijri dates.',
-      'gallery.caption6': 'Activity in Arabic and dark mode.'
+      'gallery.caption6': 'Activity in Arabic and dark mode.',
+      'toolkit.showingAll': 'Showing all {total} tools',
+      'toolkit.showing': 'Showing {count} of {total} tools',
+      'toolkit.emptyTitle': 'No tool matches “{query}”.'
     },
     ar: {
       'page.title': 'خالد العنزي — فضولي يخلّيني أجرّب.',
@@ -161,7 +164,22 @@ window.portfolioI18n = (() => {
       'gallery.caption3': 'خطتي: حطّ هدف للادخار، وشوف كيف انحسب.',
       'gallery.caption4': 'بالعربي: التطبيق كلّه يتغيّر لليمين، حتى ترتيب الواجهة.',
       'gallery.caption5': 'العربي مع الوضع الليلي، والأرقام العربية والتاريخ الهجري.',
-      'gallery.caption6': 'شاشة العمليات بالعربي مع الوضع الليلي.'
+      'gallery.caption6': 'شاشة العمليات بالعربي مع الوضع الليلي.',
+      'skills.security': 'أساسيات الأمن السيبراني',
+      'toolkit.label': 'البحث في الأدوات',
+      'toolkit.searchLabel': 'دوّر في أدواتي',
+      'toolkit.searchPlaceholder': 'جرّب «Git» أو «Python»',
+      'toolkit.filterLabel': 'صفّي حسب التصنيف',
+      'toolkit.all': 'الكل',
+      'toolkit.web': 'ويب',
+      'toolkit.mobile': 'جوال',
+      'toolkit.code': 'برمجة',
+      'toolkit.foundation': 'أساسيات',
+      'toolkit.emptyHint': 'جرّب كلمة أقصر، أو اختر تصنيف ثاني.',
+      'toolkit.reset': 'اعرض كل شي',
+      'toolkit.showingAll': 'معروض كل الأدوات: {total}',
+      'toolkit.showing': 'معروض {count} من {total} أدوات',
+      'toolkit.emptyTitle': 'ما لقيت أداة تطابق «{query}».'
     }
   };
   const bindings = [];
