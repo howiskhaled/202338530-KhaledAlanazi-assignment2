@@ -216,6 +216,34 @@ button:disabled { cursor: default; }
 .is-entering { animation: enter-up .7s var(--ease) both; animation-delay: var(--enter-delay, 0ms); }
 @keyframes enter-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
+/* Curiosity: a live Wikipedia article with loading, error and ready states. */
+.curiosity-section { padding-top: 56px; }
+.curiosity-section .section-marker { border-top: 1px solid var(--line); padding-top: 24px; }
+.fact { min-height: 340px; border: 1px solid var(--line); background: var(--surface); }
+.fact__state { display: flex; flex-direction: column; justify-content: center; gap: 14px; min-height: 340px; padding: 48px clamp(24px, 5vw, 64px); }
+.fact__state > p { font-size: 14px; color: var(--muted); }
+.fact__state > .fact__state-title { font-size: clamp(24px, 3vw, 34px); line-height: 1.2; letter-spacing: -.04em; color: var(--text); }
+.skeleton { display: block; width: 100%; max-width: 560px; height: 14px; background: linear-gradient(90deg, var(--line) 25%, var(--accent-soft) 50%, var(--line) 75%) 0 0 / 300% 100%; animation: shimmer 1.4s linear infinite; }
+.skeleton--short { max-width: 320px; }
+@keyframes shimmer { to { background-position: -300% 0; } }
+.fact__content { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); min-height: 340px; }
+.fact__content--text { grid-template-columns: minmax(0, 1fr); }
+/* The image is absolutely positioned so a tall thumbnail cannot stretch the card. */
+.fact__figure { position: relative; min-height: 260px; overflow: hidden; background: var(--line); }
+.fact__figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.fact__body { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 16px; padding: clamp(24px, 4vw, 48px); }
+.fact__description { font-size: 10px; letter-spacing: .065em; line-height: 1.4; color: var(--accent); }
+.fact__description:empty { display: none; }
+.fact__title { font-size: clamp(30px, 4vw, 48px); line-height: 1.05; font-weight: 300; letter-spacing: -.05em; overflow-wrap: anywhere; }
+.fact__extract { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 8; line-clamp: 8; overflow: hidden; font-size: 15px; line-height: 1.7; color: var(--muted); }
+.fact__content:lang(ar) .fact__title { line-height: 1.4; letter-spacing: 0; }
+.fact__content:lang(ar) .fact__extract { line-height: 1.9; }
+.fact-actions { display: flex; align-items: center; gap: 24px; margin-top: 28px; }
+.fact-actions .pill { background: var(--accent); color: var(--on-accent); }
+.fact-actions .pill:hover { background: var(--accent-hover); color: var(--on-accent); }
+.fact-actions .pill[aria-disabled="true"] { opacity: .65; cursor: progress; }
+.fact-note { font-size: 11px; color: var(--muted); }
+
 .contact-section { padding-bottom: 0; background: var(--contact-bg); }
 .contact-title { font-size: clamp(64px, 8.4vw, 108px); line-height: .98; font-weight: 300; letter-spacing: -.065em; }
 .contact-title > span:last-child { color: var(--accent); }
@@ -345,6 +373,11 @@ dialog::backdrop { background: rgba(0,0,0,.8); }
   .skills-intro p { max-width: 360px; margin-top: 24px; font-size: 13px; }
   .skill-row h3 { font-size: 24px; }
   .toolkit-controls { max-width: none; }
+  .curiosity-section { padding-top: 20px; }
+  .fact__content { grid-template-columns: minmax(0, 1fr); }
+  .fact__figure { min-height: 0; aspect-ratio: 16 / 10; }
+  .fact__extract { font-size: 14px; -webkit-line-clamp: 10; line-clamp: 10; }
+  .fact-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
   .contact-title { font-size: clamp(54px, 11.5vw, 80px); }
   .contact-layout { grid-template-columns: 1fr; margin-top: 40px; gap: 48px; }
   .contact-copy > p { font-size: 14px; }
@@ -400,6 +433,9 @@ html[dir="rtl"] .tool-list li { font-size: 14px; }
 html[dir="rtl"] .chip, html[dir="rtl"] .toolkit-count { font-size: 14px; }
 html[dir="rtl"] .empty-state__title { font-size: 22px; line-height: 1.6; }
 html[dir="rtl"] .empty-state__hint { font-size: 15px; }
+html[dir="rtl"] .fact__state > p, html[dir="rtl"] .fact__extract { font-size: 17px; }
+html[dir="rtl"] .fact__description, html[dir="rtl"] .fact-note { font-size: 13px; }
+html[dir="rtl"] .fact__state > .fact__state-title { line-height: 1.5; }
 html[dir="rtl"] .work-footnote p { font-size: 16px; }
 html[dir="rtl"] .contact-copy > p { font-size: 18px; line-height: 1.8; }
 html[dir="rtl"] .contact-copy .contact-note, html[dir="rtl"] .form__footer > p { font-size: 13px; }
